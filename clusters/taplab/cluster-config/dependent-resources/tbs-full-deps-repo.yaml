@@ -8,4 +8,4 @@ metadata:
 spec:
   fetch:
     imgpkgBundle:
-      image: harbor.tanzu.pro/tanzu-packages/tap-packages/tbs-full-deps:1.6.4
+      image: harbor.tanzu.pro/tanzu-packages/tbs-full-deps:1.6.4
