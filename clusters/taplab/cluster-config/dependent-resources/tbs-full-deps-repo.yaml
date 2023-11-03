@@ -1,0 +1,11 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageRepository
+metadata:
+  name: full-deps-package-repo
+  namespace: tap-install
+  annotations:
+    kapp.k14s.io/change-group: pkgr
+spec:
+  fetch:
+    imgpkgBundle:
+      image: harbor.tanzu.pro/tanzu-packages/tap-packages/tbs-full-deps:1.6.4

@@ -1,0 +1,11 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageRepository
+metadata:
+  name: rmq
+  namespace: tap-install
+  annotations:
+    kapp.k14s.io/change-group: rmq-repo
+spec:
+  fetch:
+    imgpkgBundle:
+      image: harbor.tanzu.pro/tanzu-packages/rmq-packages/rmq-packages:1.5.1

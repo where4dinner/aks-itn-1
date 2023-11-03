@@ -1,0 +1,6 @@
+git:
+  url: https://github.com/where4dinner/aks-itn-1
+  ref: origin/main
+  sub_path: clusters/taplab/cluster-config
+tap_package_repository:
+  oci_repository: harbor.tanzu.pro/tanzu-packages/tap-packages/tap-packages

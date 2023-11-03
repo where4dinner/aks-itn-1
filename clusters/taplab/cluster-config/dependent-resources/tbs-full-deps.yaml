@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  name: tbs-full-deps
+  namespace: tap-install
+  annotations:
+    kapp.k14s.io/change-group: full-tbs-deps
+    kapp.k14s.io/change-rule.0: "upsert after upserting tap"
+spec:
+  packageRef:
+    refName: full-deps.buildservice.tanzu.vmware.com
+    versionSelection:
+      constraints: ">=0.0.0"
+      prereleases: 
+        identifiers: [build,rc]
+  serviceAccountName: tap-install-sa
+  values:
+  - secretRef:
+      name: tap-values
