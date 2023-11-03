@@ -1,0 +1,80 @@
+apiVersion: sql.tanzu.vmware.com/v1
+kind: Postgres
+metadata:
+  name: postgres1
+  namespace: default
+spec:
+  pgConfig:
+    dbname: postgres1
+    username: pgadmin
+    appUser: pgappuser
+    readOnlyUser: pgrouser
+    readWriteUser: pgrwuser
+  postgresVersion:
+    name: postgres-15
+  serviceType: ClusterIP
+  seccompProfile:
+    type: RuntimeDefault
+  imagePullSecret:
+    name: registries-credentials
+  persistentVolumeClaimPolicy: delete
+  storageSize: 800M
+  dataPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - data
+                - monitor
+              - key: postgres-instance
+                operator: In
+                values:
+                - postgres1
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+  monitorStorageSize: 1G
+  monitorPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - data
+                - monitor
+              - key: postgres-instance
+                operator: In
+                values:
+                - postgres-sample
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+  resources:
+    data:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+    monitor:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+    metrics:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi

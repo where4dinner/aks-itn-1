@@ -1,0 +1,93 @@
+tap_install:
+  values:
+    excluded_packages:
+    - learningcenter.tanzu.vmware.com
+    - workshops.learningcenter.tanzu.vmware.com
+    - eventing.tanzu.vmware.com
+    shared:
+      ingress_domain: aks-itn-1.where4dinner.com
+      ingress_issuer: letsencrypt-production
+    ceip_policy_disclosed: true
+    profile: full
+    supply_chain: basic
+    ootb_supply_chain_basic:
+      registry:
+        server: harbor.aks-itn-1.where4dinner.com
+        repository: tap
+      gitops:
+        ssh_secret: workload-git-auth
+    ootb_supply_chain_testing_scanning:
+      registry:
+        server: harbor.aks-itn-1.where4dinner.com
+        repository: tap
+      gitops:
+        ssh_secret: workload-git-auth
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer
+    buildservice:
+      kp_default_repository: harbor.aks-itn-1.where4dinner.com/tap/buildservice
+    tap_gui:
+      service_type: ClusterIP
+      metadataStoreAutoconfiguration: true
+      app_config:
+        auth:
+          allowGuestAccess: true
+        catalog:
+          locations:
+          - type: url
+            target: https://github.com/tanzupro/tap-catalog-1/blob/main/catalog-info.yaml
+    metadata_store:
+      ns_for_export_app_cert: '*'
+      app_service_type: ClusterIP
+    #scanning:
+      #metadataStore:
+        #url: metadata-store.aks-itn-1.where4dinner.com
+    grype:
+      namespace: default
+      targetImagePullSecret: registries-credentials
+    policy:
+      tuf_enabled: false
+    cnrs:
+      domain_template: '{{.Name}}-{{.Namespace}}.{{.Domain}}'
+    api_portal:
+      apiPortalServer:
+        sourceUrls: https://petstore.swagger.io/v2/swagger.json,http://customer-profile-x.default.svc.cluster.local:8080/api-docs,http://scg-operator.tap-install.svc.cluster.local/openapi
+        trustInsecureSourceUrls: true
+        sourceUrlsCacheTtlSec: "30"
+        sourceUrlsTimeoutSec: "30"
+    local_source_proxy:
+      repository: harbor.eks-euw3-1.where4dinner.com/tap/local-source
+      push_secret:
+        name: lsp-push-credentials
+        namespace: tap-install
+        create_export: true
+    namespace_provisioner:
+      controller: false
+      gitops_install:
+        ref: origin/main
+        subPath: clusters/taplab/cluster-config/namespaces
+        url: https://github.com/where4dinner/aks-itn-1
+        secretRef:
+          name: git-auth
+          namespace: tap-install
+          create_export: true
+      additional_sources:
+      - git:
+          ref: origin/main
+          subPath: clusters/taplab/cluster-config/namespaces/namespace-resources
+          url: https://github.com/where4dinner/aks-itn-1
+          secretRef:
+            name: git-auth-install
+            namespace: tap-install
+            create_export: true
+        path: _ytt_lib/namespace-resources
+      default_parameters:
+        supply_chain_service_account:
+          secrets:
+          - workload-git-auth
+    package_overlays:
+    - name: api-portal
+      secrets:
+      - name: api-portal-cm-tls-overlay-secret

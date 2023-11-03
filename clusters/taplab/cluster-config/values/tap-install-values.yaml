@@ -1,0 +1,6 @@
+tap_install:
+  package_repository:
+    oci_repository: harbor.tanzu.pro/tanzu-packages/tap-packages
+  version:
+    package_repo_bundle_tag: 1.7.0-rc.19
+    package_version: 1.7.0-rc.19
