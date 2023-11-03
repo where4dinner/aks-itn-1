@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: cm-sa
-  namespace: tap-gui
-imagePullSecrets:
-- name: private-registry-credentials
-  namespace: tap-gui

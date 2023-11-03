@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: cm-sa
-imagePullSecrets:
- - name: registries-credentials
