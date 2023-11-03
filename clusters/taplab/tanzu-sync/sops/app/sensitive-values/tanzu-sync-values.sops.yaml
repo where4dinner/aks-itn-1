@@ -3,7 +3,7 @@ secrets:
         age_key: ENC[AES256_GCM,data:pk4mC/yJWzFEPCpWDkbOeyehRQJ6H2KgocUjjdvw4kPVhpy2jusNIBIvbo3EFObJF1vZ28PEnqHBmN5bbA53Ikgxw2FeAxNqdYL+oR3NDAUBilLzsv6asMJDC2iMOwk5kHq2gT+V4X9WlDDqRerqgf+lKOisF6a5Fm9yCcWfxb7H3DRZjqb3DlzMBvHxJodzKrcvVdJybEAoojXHw0QYeduo3+qG94GfLfDHBnrnNSj7ymWBoi3P,iv:izxHvUAZahmR2RwvhRL29Z5bp+I1n4Vlj9cdo4JxU7c=,tag:3Fy9h3Xu5Ku/eOfchLoEkw==,type:str]
         registry:
             hostname: ENC[AES256_GCM,data:LDSkv/BgwDVF/2mnHQaSlA==,iv:r3r0f04Ym++CXo4R4/Cx8lHOslDvUYAHOUvcT/+iaaM=,tag:z+19/R+BUDhhSfZ57JA0Qg==,type:str]
-            username: ENC[AES256_GCM,data:7lNKbwg=,iv:UI5pQJkHB3V2zY5HK5SFYM1UDxroY9CyRVvus/Y9kvc=,tag:61mFhUBmENlhLHT2SVgKMA==,type:str]
+            username: ENC[AES256_GCM,data:bySCWLw=,iv:PQygAMl6iatquWUVmmBGTCv0OEGGYAvtqP0yqsIOhoM=,tag:KE6suUHJLIPokWVGCju63Q==,type:str]
             password: ENC[AES256_GCM,data:+TQoH07NAKPpeIk=,iv:BAhO0Pz7syKw247I8AGJiw9FySEhlaSVQWSyooD8NFQ=,tag:trK3ajTD3OxAoUNBZ1XUpg==,type:str]
         git:
             basic_auth:
@@ -24,8 +24,8 @@ sops:
             dUNoUGg2dDBwWEc3QnJIL0ZZQ1BuQ1UK+5RKv7lJNbXLnTJaVLaIxNJ23dNPmv9c
             vLNMSQomuK8L3cSEe18pgINGTYI5raukyb0k5sNWQAVMSi2JEtvC5w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-03T10:06:11Z"
-    mac: ENC[AES256_GCM,data:caLbxcb/WmHIl82p82mnA+il3x4MZhdtSf7Nfk8mIvsg6ahLBuKJSQ2T7RA6P3YJuvrNTMgCqRQOPdA0UJfYg7tychPeVm5vkeXI2w2xav0gBnHkxYAvL+d1FQK4sWnBnIVp+b7eer1DXD0X5tLf4jXd6EcdIlS6mJKbl23HCws=,iv:c9ZKFX/C4m5hjJU3xoKnrSRjJwKSs6+r8NG0Zq22Sgg=,tag:gT4E/2ZhbfLAInC04msSRg==,type:str]
+    lastmodified: "2023-11-03T10:46:05Z"
+    mac: ENC[AES256_GCM,data:3t0eauTjyT2DyhgbBDviYNAzSlhK6IyBrRZkttxya0Tyr4OC+scmvAOHem4H8mNgf3u7PDktSePegVVYOelPOGwjPQAxscb01FWlr4RlsOrtdoDoKzW56TNhAZbeZBhhLO2gUEh5dNsuS4iIlvCnsslKrcYJSoStZuDQ8ymTHTE=,iv:id32YPcfVzo1sOm8ZCCg+YKSmTn0sRkfoGIQj63PWi0=,tag:SKWMYr63wKSj1gDIlnBEWA==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.8.1
