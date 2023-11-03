@@ -58,7 +58,7 @@ tap_install:
         sourceUrlsCacheTtlSec: "30"
         sourceUrlsTimeoutSec: "30"
     local_source_proxy:
-      repository: harbor.eks-euw3-1.where4dinner.com/tap/local-source
+      repository: harbor.aks-itn-1.where4dinner.com/tap/local-source
       push_secret:
         name: lsp-push-credentials
         namespace: tap-install
