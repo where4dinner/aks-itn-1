@@ -12,7 +12,7 @@ spec:
   packageRef:
     refName: ootb-supply-chain-testing-scanning.tanzu.vmware.com
     versionSelection:
-      constraints: 0.13.11
+      constraints: 0.13.9
       prereleases: {}
   serviceAccountName: tap-install-sa
   values:
